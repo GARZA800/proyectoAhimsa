@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--
+Template Name: Mandant
+Author: <a href="http://www.os-templates.com/">OS Templates</a>
+Author URI: http://www.os-templates.com/
+Licence: Frbee to use under our free template licence terms
+Licence URI: http://www.os-templates.com/template-terms
+-->
+<html>
+<head>
+<title>Ahimsa</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+<link href="layout/styles/home-style.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<div class="wrapper row1">
+  <header id="header" class="clear"> 
+    <!-- ################################################################################################ -->
+    <div id="logo" class="fl_left">
+      <h1><a href="home.html">Ahimsa</a></h1>
+    </div>
+    <!-- ################################################################################################ -->
+    <nav id="mainav" class="fl_right">
+      <ul class="clear">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="#">Recetas</a></li>
+        <li><a href="#">Lugares</a></li>
+        <li><a href="#">Mapa MX</a></li>
+        <li><a href="#">Contacto</a></li>
+        <li class="active"><a href="login.html">Inicia Sesión</a></li>
+      </ul>
+    </nav>
+    <!-- ################################################################################################ -->
+  </header>
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row3">
+  <main class="container clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div> 
+      <div class="row">
+    <div class="col-sm-6">
+      <div class="well">
+        <h3><span class="fa fa-user"></span> Local</h3>
+        <% if (user.username) { %>
+          <p>
+            <strong>id</strong>: <%= user.id %><br>
+            <strong>username</strong>: <%= user.username %><br>
+            <strong>password</strong>: <%= user.password %>
+          </p>
+          
+          <a href="/unlink/local" class="btn btn-default">Unlink</a>
+        <% } else { %>
+          <a href="/connect/local" class="btn btn-default">Connect Local</a>
+        <% } %>
+
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="well">
+        <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+        <% if (user.facebook_token) { %>
+          <p>
+            <strong>id</strong>: <%= user.facebook_id %><br>
+            <strong>token</strong>: <%= user.facebook_token %><br>
+            <strong>email</strong>: <%= user.facebook_email %><br>
+            <strong>name</strong>: <%= user.facebook_name %><br>
+          </p>
+          <a href="/unlink/facebook" class="btn btn-primary">Unlink</a>
+        <% } else { %>
+          <a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<!-- ################################################################################################ -->
+<div class="wrapper row5">
+  <div id="copyright" class="clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a> 
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+</body>
+</html>

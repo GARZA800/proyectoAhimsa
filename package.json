@@ -1,0 +1,27 @@
+{
+  "name": "AHIMSA",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.13.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.3.5",
+    "debug": "^2.2.0",
+    "ejs": "^2.5.7",
+    "express": "^4.13.4",
+    "express-mysql-session": "^1.2.2",
+    "express-session": "^1.15.6",
+    "morgan": "^1.6.1",
+    "mysql": "^2.15.0",
+    "nodemailer": "^4.4.0",
+    "p": "^0.2.0",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "serve-favicon": "^2.3.2"
+  }
+}
