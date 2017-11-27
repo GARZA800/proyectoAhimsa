@@ -41,22 +41,17 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div id="info"> 
-      <h4 class="uppercase btmspace-50">Receta 1</h4>
+      <h4 id="titulo" class="uppercase btmspace-50"></h4>
        <!-- ################################################################################################ -->
       <div> 
        <h1 id="Title" class=" one_half uppercase btmspace-50">Preparación</h1>
-        <p class=" justify one_half" id="Informacion" >Lorum to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written i</p>
+        <p class=" justify one_half" id="contenido" ></p>
         <br>
       </div>
       <div>
-        <img class="one_quarter" src="images/gallery/receta2.jpg" alt="">
+        <img class="one_quarter" id="imagen" src="https://namelymarly.com/wp-content/uploads/2016/08/Lunch-tofu-sandwich1313820.png" alt="">
         <h1 class="one_quarter">Ingredientes</h1>
-        <p class="justify one_quarter" id="Informacion" >150 ml Aceite de oliva virgen extra
-        60 g queso Grana Padano o Parmesano regiano rallado
-        50 g Piñones
-        10 hojas Albahaca
-        1/4 Ajo al gusto
-        sal gruesa marina</p>
+        <p class="justify one_quarter" id="ingredientes" ></p>
       </div>
     <!-- ################################################################################################ -->
     <div class="clear"></div>
@@ -103,5 +98,27 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script type='text/javascript' language='javascript'>
+  $(document).ready(function(){
+                 $.ajax({
+                         url: "http://localhost:3000/recipes",
+                          type:'GET',
+                          dataType: 'json',
+                           error: function(){
+                           /*ERROR*/
+                           },
+ 
+                          success:function(data){
+                           $("#titulo").append(JSON.stringify(data[0].title));
+                           $("#contenido").append(JSON.stringify(data[0].content));
+                           $("#ingredientes").append(JSON.stringify(data[0].ingredients));
+                           $("#imagen").append(JSON.stringify(data[0].imageURL));
+                           $("#fecha").append(JSON.stringify(data[0].date));
+                           $( '#getdata' ).html(data);
+                         },
+                   }); // End of ajax call
+ 
+     });
+ </script>
 </body>
 </html>

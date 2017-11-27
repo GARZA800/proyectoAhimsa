@@ -45,7 +45,7 @@ Licence URI: http://www.os-templates.com/template-terms
        <h4 class="uppercase btmspace-50">BLOG</h4>
         <div class ="square center article">
           <h3 id="titulo"></h3>
-          <input type='image' alt='Submit' name='getdata' id='getdata' src="images/gallery/article1.jpg">
+          <input type='image' alt='Submit' src="images/gallery/article1.jpg">
           <p id="contenido"></p>
         </div>
     </div>
@@ -94,7 +94,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type='text/javascript' language='javascript'>
- $('#getdata').click(function(){
+ $(document).ready(function(){
                 $.ajax({
                         url: "http://localhost:3000/blogs",
                          type:'GET',
@@ -111,7 +111,6 @@ Licence URI: http://www.os-templates.com/template-terms
                   }); // End of ajax call
 
     });
-
 </script>
 </body>
 </html>

@@ -13,6 +13,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
 <link href="layout/styles/home-style.css" rel="stylesheet" type="text/css" media="all">
+<script type="text/javascript" src="scripts/lugares.js"></script>
 </head>
 <body id="top">
 <!-- ################################################################################################ -->
@@ -27,8 +28,8 @@ Licence URI: http://www.os-templates.com/template-terms
       <ul class="clear">
         <li><a href="home.html">Home</a></li>
         <li><a href="blog.html">Blog</a></li>
-        <li class="active"><a href="recetas.html">Recetas</a></li>
-        <li><a href="lugares.html">Lugares</a></li>
+        <li><a href="recetas.html">Recetas</a></li>
+        <li class="active"><a href="lugares.html">Lugares</a></li>
         <li><a href="login.html">Inicia Sesión</a></li>
       </ul>
     </nav>
@@ -40,23 +41,19 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div id="info"> 
-      <h4 class="uppercase btmspace-50">RECETAS</h4>
-      <!-- ################################################################################################ -->
-      <div id="gallery">
-        <figure>
-          <ul class="nospace clear">
-            <li class="one_quarter first"><a href="info_receta.html"><img src="https://namelymarly.com/wp-content/uploads/2016/08/Lunch-tofu-sandwich1313820.png" alt=""></a></li>
-            <li class="one_quarter"><a href="info_receta2.html"><img src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/10/sweet-potato-curry.jpg?itok=fxpDCqoG" alt=""></a></li>
-            <li class="one_quarter"><a href="info_receta3.html"><img src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/10/roasted-cauliflower.jpg?itok=BmY7PZOm" alt=""></a></li>
-            <li class="one_quarter"><a href="info_receta4.html"><img src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/10/rainbow-pie.jpg?itok=6N4r4VOI" alt=""></a></li>
-          </ul>
-          <figcaption>Selecciona una receta para ver sus ingredientes y proceso de preparación</figcaption>
-        </figure>
+      <h4 id="titulo" class="uppercase btmspace-50"></h4>
+       <!-- ################################################################################################ -->
+      <div> 
+       <h1 id="Title" class=" one_half uppercase btmspace-50">Preparación</h1>
+        <p class=" justify one_half" id="contenido" ></p>
+        <br>
       </div>
-      <!-- ################################################################################################ -->
-    </div>
+      <div>
+        <img class="one_quarter" id="imagen" src="https://www.bbcgoodfood.com/sites/default/files/styles/recipe/public/recipe/recipe-image/2017/10/rainbow-pie.jpg?itok=6N4r4VOI" alt="">
+        <h1 class="one_quarter">Ingredientes</h1>
+        <p class="justify one_quarter" id="ingredientes" ></p>
+      </div>
     <!-- ################################################################################################ -->
-    <!-- / main body -->
     <div class="clear"></div>
   </main>
 </div>
@@ -102,7 +99,7 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script type='text/javascript' language='javascript'>
-  $('#getdata').click(function(){
+  $(document).ready(function(){
                  $.ajax({
                          url: "http://localhost:3000/recipes",
                           type:'GET',
@@ -112,7 +109,11 @@ Licence URI: http://www.os-templates.com/template-terms
                            },
  
                           success:function(data){
-                           $("#imagen").append(JSON.stringify(data[0].imageURL));
+                           $("#titulo").append(JSON.stringify(data[3].title));
+                           $("#contenido").append(JSON.stringify(data[3].content));
+                           $("#ingredientes").append(JSON.stringify(data[3].ingredients));
+                           $("#imagen").append(JSON.stringify(data[3].imageURL));
+                           $("#fecha").append(JSON.stringify(data[3].date));
                            $( '#getdata' ).html(data);
                          },
                    }); // End of ajax call

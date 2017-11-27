@@ -59,11 +59,11 @@ transporter.verify(function(error, success) {
 // Funcion para mandar un email
 // app.use( function ( req,res,next){
 // 	let mailOptions = {
-// 		from: '"Seungy " <leeseu95@gmail.com>',
+// 		from: '"Ahimsa" <leeseu95@gmail.com>',
 // 		// to: req.session.email,
-// 		to: "leeseu95@gmail.com",
-// 		subject: "Testing my webapp",
-// 		text: "Hello from Ahimsa, thank you for registering!",
+// 		// to: "leeseu95@gmail.com",
+// 		subject: "Thank you for registering in Ahimsa",
+// 		text: "Hello from Ahimsa, we'd like to personally thank you for registering!",
 // 	};
 // 	transporter.sendMail(mailOptions, (error,info) => {
 // 		if (error){
