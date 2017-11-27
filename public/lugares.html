@@ -115,5 +115,26 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script type='text/javascript' language='javascript'>
+  $(document).ready(function(){
+                 $.ajax({
+                         url: "http://localhost:3000/restaurants",
+                          type:'GET',
+                          dataType: 'json',
+                           error: function(){
+                           /*ERROR*/
+                           },
+ 
+                          success:function(data){
+                           $("#nombre").append(JSON.stringify(data[0].name));
+                           $("#informacion").append(JSON.stringify(data[0].information));
+                           $("#latitud").append(JSON.stringify(data[0].lat));
+                           $("#longitud").append(JSON.stringify(data[0].longit));
+                           $( '#getdata' ).html(data);
+                         },
+                   }); // End of ajax call
+ 
+     });
+ </script>
 </body>
 </html>
