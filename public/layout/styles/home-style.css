@@ -63,6 +63,7 @@ File: Layout CSS
 ---------------------------------------------------------------------------------------------------------------*/
 .article input{height: 15%; width: 15%; position: relative; left:0px; }
 .article p{text-align: right}
+#BlogImage{margin-left: 42%}
 
 /*Map*/
 #map { height: 400px; width: 100%;}
@@ -355,7 +356,7 @@ table a, #comments a{background-color:inherit;}
 
 /* Smartphone + Tablet
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-width:180px) and (max-width:750px) {
+@media screen and (min-width:180px) and (max-width:768px) {
    .imgl, .imgr{display:inline-block; float:none; margin:0 0 10px 0;}
    .fl_left, .fl_right{display:block; float:none;}
    .one_half, .one_third, .two_third, .one_quarter, .two_quarter, .three_quarter{display:block; float:none; width:auto; margin:0 0 30px 0; padding: 0;}
@@ -373,7 +374,7 @@ table a, #comments a{background-color:inherit;}
    #footer{padding-bottom:30px;}
 }
 
-@media screen and (min-width:180px) and (max-width:900px) {
+@media screen and (min-width:180px) and (max-width:1024px) {
    #header, #billboard, #breadcrumb, .container, #intro, #info, #footer, #copyright{max-width:90%;}
 
    #header{}
@@ -408,14 +409,14 @@ table a, #comments a{background-color:inherit;}
 
 /* Max Wrapper Width - Laptop, Desktop etc.
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (min-width:978px) {
+@media screen and (min-width:768px) {
    #header, #billboard, #breadcrumb, .container, #intro, #info, #footer, #copyright{max-width:978px;}
 }
 
 
 /* Other
 --------------------------------------------------------------------------------------------------------------- */
-@media screen and (max-width:650px) {
+@media screen and (max-width:768px) {
    .scrollable{display:block; width:100%; margin:0 0 30px 0; padding:0 0 15px 0; overflow:auto; overflow-x:scroll;}
    .scrollable table{margin:0; padding:0; white-space:nowrap;}
 }
