@@ -1,18 +1,6 @@
-function SelectCheck(nameSelect){
-    console.log(nameSelect);
-    if(nameSelect){
+function SelectCheck(){
       OptionValue = document.getElementsByTagName("option").value;
-      if(OptionValue == nameSelect.value){
-        document.getElementById("Title").innerHTML = "titulo Prueba";
-        document.getElementById("Informacion").innerHTML = "Información prueba";
-      }
-      else{
-        document.getElementById("selectedCheck").style.display = "none";
-      }
-    }
-    else{
-      document.getElementById("selectedCheck").style.display = "none";
-    }
+      console.log(OptionValue);
 }
 
 function initMap() {
@@ -26,3 +14,15 @@ function initMap() {
     map: map
   });
 }
+
+/*if(OptionValue == nameSelect.value){
+        document.getElementById("Title").innerHTML = "titulo Prueba";
+        document.getElementById("Informacion").innerHTML = "Información prueba";
+      
+      else{
+        document.getElementById("selectedCheck").style.display = "none";
+      }
+    }
+    else{
+      document.getElementById("selectedCheck").style.display = "none";
+    }*/

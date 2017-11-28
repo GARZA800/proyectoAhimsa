@@ -13,12 +13,8 @@ Licence URI: http://www.os-templates.com/template-terms
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
 <link href="layout/styles/home-style.css" rel="stylesheet" type="text/css" media="all">
-<script type="text/javascript" src="scripts/lugares.js"></script>
-<script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDopG9vUXttLm85BYWKpwa8l_w9l6VBVT8&callback=initMap">
-</script>
 </head>
-<body onload = "testF()" id="top">
+<body id="top">
 <!-- ################################################################################################ -->
 <div class="wrapper row1">
   <header id="header" class="clear"> 
@@ -44,8 +40,9 @@ Licence URI: http://www.os-templates.com/template-terms
     <!-- main body -->
     <!-- ################################################################################################ -->
     <div id="info"> 
-      <h4 class="uppercase btmspace-50">Lugares</h4>
-      <select class="uppercase btmspace-50">
+      <h4 class="uppercase btmspace-50">Restaurantes</h4>
+      <select name="Select" id="Select" class="uppercase btmspace-50">
+        <option>Selecciona un restaurante</option>
         <option value="0">Forever Vegano</option>
         <option value="1">Pan Comido</option>
         <option value="2">VegaAmo</option>
@@ -59,12 +56,12 @@ Licence URI: http://www.os-templates.com/template-terms
       </select>
        <!-- ################################################################################################ -->
       <div> 
-       <h1 id="Title" class="uppercase btmspace-50">Título</h1>
+       <h1 id="nombre" class="uppercase btmspace-50">Elige un restaurante para ver sus datos</h1>
        <div id="test"></div>
-        <p id="Informacion" >Información</p>
+        <p id="informacion" ></p>
         <br>
       </div>
-      <h2>Ubicación</h2>
+      <h2></h2>
     <div id="map"></div>
     
       <!-- ################################################################################################ -->
@@ -117,24 +114,52 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script type='text/javascript' language='javascript'>
   $(document).ready(function(){
-                 $.ajax({
-                         url: "http://localhost:3000/restaurants",
-                          type:'GET',
-                          dataType: 'json',
-                           error: function(){
-                           /*ERROR*/
-                           },
+
+      $('#Select').on('change',function(){
+      var valor =  $(this).val();
+      document.getElementById("nombre").innerHTML = "";
+    document.getElementById("informacion").innerHTML = "";
+          $.ajax({
+                    url: "http://localhost:3000/restaurants",
+                    type:'GET',
+                    dataType: 'json',
+                     error: function(){
+                     /*ERROR*/
+                     },
+
+                    success:function(data){
+                     $("#nombre").append(JSON.stringify(data[valor].name));
+                     $("#informacion").append(JSON.stringify(data[valor].information));
+                     var latitud = JSON.stringify(data[valor].lat);
+                     var longitud = JSON.stringify(data[valor].longit);   
+                     initMap(latitud, longitud)                  
+                   },
+             }); // End of ajax call       
+    });            
  
-                          success:function(data){
-                           $("#nombre").append(JSON.stringify(data[0].name));
-                           $("#informacion").append(JSON.stringify(data[0].information));
-                           $("#latitud").append(JSON.stringify(data[0].lat));
-                           $("#longitud").append(JSON.stringify(data[0].longit));
-                           $( '#getdata' ).html(data);
-                         },
-                   }); // End of ajax call
- 
-     });
+});
+
+   function initMap(latitud, longitud) {
+        var uluru = {lat: -latitud, lng: -longitud};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+
  </script>
+  <script>
+     
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDopG9vUXttLm85BYWKpwa8l_w9l6VBVT8&callback=initMap">
+</script>
 </body>
 </html>
+
+
+
