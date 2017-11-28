@@ -79,7 +79,6 @@ Licence URI: http://www.os-templates.com/template-terms
   <div id="copyright" class="clear"> 
     <!-- ################################################################################################ -->
     <p class="fl_left">Copyright &copy; 2015 - All Rights Reserved - <a href="#">Domain Name</a></p>
-    <p class="fl_right">Template by <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
     <!-- ################################################################################################ -->
   </div>
 </div>
@@ -89,6 +88,25 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
+<script type="text/javascript">
+ $('#getdata').click(function(){
+                $.ajax({
+                        url: "http://localhost:3000/users",
+                         type:'GET',
+                         dataType: 'json',
+                          error: function(){
+                          /*ERROR*/
+                          },
+
+                         success:function(data){
+                          var email = SON.stringify(data[0].username);
+                          console.log("works")
+                        },
+                  }); // End of ajax call
+
+    });
+
+</script>
 </body>
 </html>
 </body>

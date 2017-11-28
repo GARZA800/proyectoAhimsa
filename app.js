@@ -16,6 +16,7 @@ var indexRoutes = require('./app_server/routes/index');
 var blogRoute = require('./app_server/routes/blogRoute');
 var recipesRoute = require('./app_server/routes/recipesRoute');
 var restaurantsRoute = require('./app_server/routes/restaurantsRoute');
+var userRoute = require('./app_server/routes/userRoute');
 var db = require('./db');
 var nodemailer = require('nodemailer');
 var emailConfig = require('./email');
@@ -124,6 +125,7 @@ app.use('/', indexRoutes);
 app.use('/blogs', blogRoute);
 app.use('/recipes', recipesRoute);
 app.use('/restaurants', restaurantsRoute);
+app.use('/users', userRoute);
 require('./app_server/routes/routes.js')(app, passport); 
 
 // catch 404 and forward to error handler
