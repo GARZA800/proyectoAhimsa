@@ -8,18 +8,16 @@ var app=express();
 var smtpTransport = nodemailer.createTransport({
     service: "gmail",
     host: "smtp.gmail.com",
-    auth: {
-        user: " ",
-        pass: ""
-    }
+	auth: {
+		user: "leeseu95@gmail.com",
+		pass: "Homero23s!"
+	}
 });
 /*------------------SMTP Over-----------------------------*/
 
 /*------------------Routing Started ------------------------*/
 
-app.get('/',function(req,res){
-    res.sendfile('index.html');
-});
+
 app.get('/send',function(req,res){
     var mailOptions={
         to : req.query.to,
@@ -29,10 +27,10 @@ app.get('/send',function(req,res){
     console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function(error, response){
      if(error){
-            console.log(error);
+        console.log(error);
         res.end("error");
      }else{
-            console.log("Message sent: " + response.message);
+        console.log("Message sent: " + response.message);
         res.end("sent");
          }
 });
