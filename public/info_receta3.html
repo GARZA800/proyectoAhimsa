@@ -49,7 +49,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <br>
       </div>
       <div>
-        <img class="one_quarter" id="imagen" src="https://static01.nyt.com/images/2015/10/15/dining/15COOKING-CAULIFLOWER1/15COOKING-CAULIFLOWER-articleLarge.jpg" alt="">
+        <img class="one_quarter" id="imagen" alt="">
         <h1 class="one_quarter">Ingredientes</h1>
         <p class="justify one_quarter" id="ingredientes" ></p>
       </div>
@@ -112,7 +112,7 @@ Licence URI: http://www.os-templates.com/template-terms
                            $("#titulo").append(JSON.stringify(data[2].title));
                            $("#contenido").append(JSON.stringify(data[2].content));
                            $("#ingredientes").append(JSON.stringify(data[2].ingredients));
-                           $("#imagen").append(JSON.stringify(data[2].imageURL));
+                           $("#imagen").attr("src", data[2].imageURL)
                            $("#fecha").append(JSON.stringify(data[2].date));
                            $( '#getdata' ).html(data);
                          },
