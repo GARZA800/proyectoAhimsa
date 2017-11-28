@@ -29,6 +29,8 @@ Licence URI: http://www.os-templates.com/template-terms
         <li><a href="blog.html">Blog</a></li>
         <li><a href="#">Recetas</a></li>
         <li><a href="#">Lugares</a></li>
+        <li><a href="#">Mapa MX</a></li>
+        <li><a href="#">Contacto</a></li>
         <li class="active"><a href="login.html">Inicia Sesión</a></li>
       </ul>
     </nav>
@@ -62,9 +64,7 @@ Licence URI: http://www.os-templates.com/template-terms
 				<% if (user.facebook_token) { %>
 					<p>
 						<strong>id</strong>: <%= user.facebook_id %><br>
-						<strong>token</strong>: <%= user.facebook_token %><br>
 						<strong>email</strong>: <%= user.facebook_email %><br>
-						<strong>name</strong>: <%= user.facebook_name %><br>
 					</p>
 				<% } else { %>
 					<a href="/connect/facebook" class="btn btn-primary">Connect Facebook</a>

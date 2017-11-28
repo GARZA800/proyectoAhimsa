@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
 	app.get('/', function(req, res) {
-		res.render('index.ejs');
+		res.redirect('/login.html');
 	});
 	app.get('/profile', isLoggedIn, function(req, res) {
 		res.render('profile.ejs', {
@@ -9,15 +9,15 @@ module.exports = function(app, passport) {
 	});
 	app.get('/logout', function(req, res) {
 		req.logout();
-		res.redirect('/');
+		res.redirect('/login.html');
 	});
 		app.get('/login', function(req, res) {
 			res.render('login.ejs', { message: req.flash('loginMessage') });
 		});
 
 		app.post('/login', passport.authenticate('local-login', {
-			successRedirect : '/index', 
-			failureRedirect : '/login',
+			successRedirect : '/profile', 
+			failureRedirect : '/login.html',
 			failureFlash : true
 		}));
 
@@ -26,23 +26,23 @@ module.exports = function(app, passport) {
 		});
 
 		app.post('/signup', passport.authenticate('local-signup', {
-			successRedirect : '/index', 
-			failureRedirect : '/signup',
+			successRedirect : '/home.html', 
+			failureRedirect : '/login.html',
 			failureFlash : true
 		}));
 		app.get('/auth/facebook', passport.authenticate('facebook', { scope : 'email' }));
 
 		app.get('/auth/facebook/callback',
 			passport.authenticate('facebook', {
-				successRedirect : '/index',
-				failureRedirect : '/'
+				successRedirect : '/home.html',
+				failureRedirect : '/login.html'
 			}));
 
 		app.get('/connect/local', function(req, res) {
 			res.render('connect-local.ejs', { message: req.flash('loginMessage') });
 		});
 		app.post('/connect/local', passport.authenticate('local-signup', {
-			successRedirect : '/index',
+			successRedirect : '/home.html',
 			failureRedirect : '/connect/local',
 			failureFlash : true
 		}));
@@ -51,8 +51,8 @@ module.exports = function(app, passport) {
 
 		app.get('/connect/facebook/callback',
 			passport.authorize('facebook', {
-				successRedirect : '/index',
-				failureRedirect : '/'
+				successRedirect : '/home.html',
+				failureRedirect : '/login.html'
 			}));
 
 	app.get('/unlink/local', isLoggedIn, function(req, res) {
@@ -60,7 +60,7 @@ module.exports = function(app, passport) {
 		user.local.email    = undefined;
 		user.local.password = undefined;
 		user.save(function(err) {
-			res.redirect('/index');
+			res.redirect('/login.html');
 		});
 	});
 
@@ -68,7 +68,7 @@ module.exports = function(app, passport) {
 		var user            = req.user;
 		user.facebook.token = undefined;
 		user.save(function(err) {
-			res.redirect('/index');
+			res.redirect('/login.html');
 		});
 	});
 };
@@ -77,5 +77,5 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated())
 		return next();
 	
-	res.redirect('/index');
+	res.redirect('/profile');
 }
