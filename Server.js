@@ -17,6 +17,9 @@ var smtpTransport = nodemailer.createTransport({
 
 /*------------------Routing Started ------------------------*/
 
+app.get('/mail',function(req,res){
+    res.sendfile('index.html');
+});
 
 app.get('/send',function(req,res){
     var mailOptions={

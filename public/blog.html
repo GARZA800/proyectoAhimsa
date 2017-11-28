@@ -44,9 +44,23 @@ Licence URI: http://www.os-templates.com/template-terms
     <div id="info"> 
        <h4 class="uppercase btmspace-50">BLOG</h4>
         <div class ="square center article">
-          <h3 id="titulo"></h3>
+          <h3 id="titulo" value="0"></h3>
           <input type='image' alt='Submit' src="images/gallery/article1.jpg">
-          <p id="contenido"></p>
+          <p id="contenido" value="0"></p>
+        </div>
+    </div>
+    <!-- ################################################################################################ -->
+</div>
+<div class="wrapper row3">
+  <main class="clear"> 
+    <!-- main body -->
+    <!-- ################################################################################################ -->
+    <div id="info"> 
+       <h4 class="uppercase btmspace-50">BLOG</h4>
+        <div class ="square center article">
+          <h3 id="titulo2" value="1"></h3>
+          <input type='image' alt='Submit' src="images/gallery/article1.jpg">
+          <p id="contenido2" value="1"></p>
         </div>
     </div>
     <!-- ################################################################################################ -->
@@ -93,6 +107,29 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- <script type='text/javascript' language='javascript'>
+  $(document).ready(function(){
+
+      $('#Select').on('change',function(){
+      var valor =  $(this).val();
+          $.ajax({
+                    url: "http://localhost:3000/blogs",
+                    type:'GET',
+                    dataType: 'json',
+                     error: function(){
+                     /*ERROR*/
+                     },
+
+                    success:function(data){
+                     $("#titulo").append(JSON.stringify(data[0].title));
+                     $("#contenido").append(JSON.stringify(data[0].content));
+                   },
+             }); // End of ajax call       
+    });            
+ 
+});
+
+ </script> -->
 <script type='text/javascript' language='javascript'>
  $(document).ready(function(){
                 $.ajax({
@@ -106,6 +143,8 @@ Licence URI: http://www.os-templates.com/template-terms
                          success:function(data){
                           $("#titulo").append(JSON.stringify(data[0].title));
                           $("#contenido").append(JSON.stringify(data[0].content));
+                          $("#titulo2").append(JSON.stringify(data[1].title));
+                          $("#contenido2").append(JSON.stringify(data[1].content));
                           $( '#getdata' ).html(data);
                         },
                   }); // End of ajax call
