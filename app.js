@@ -126,7 +126,12 @@ app.use('/blogs', blogRoute);
 app.use('/recipes', recipesRoute);
 app.use('/restaurants', restaurantsRoute);
 app.use('/users', userRoute);
-require('./app_server/routes/routes.js')(app, passport); 
+require('./app_server/routes/routes.js')(app, passport);
+
+app.get('/mail',function(req,res){
+res.sendfile('index.html');
+}); 
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

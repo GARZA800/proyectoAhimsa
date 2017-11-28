@@ -49,7 +49,7 @@ Licence URI: http://www.os-templates.com/template-terms
         <br>
       </div>
       <div>
-        <img class="one_quarter" id="imagen" src="http://www.simplyrecipes.com/wp-content/uploads/2017/04/2017-05-13-Potato-Broccoli-Curry-3-600x400.jpg" alt="">
+        <img class="one_quarter" id="imagen" alt="">
         <h1 class="one_quarter">Ingredientes</h1>
         <p class="justify one_quarter" id="ingredientes" ></p>
       </div>
@@ -112,7 +112,7 @@ Licence URI: http://www.os-templates.com/template-terms
                            $("#titulo").append(JSON.stringify(data[1].title));
                            $("#contenido").append(JSON.stringify(data[1].content));
                            $("#ingredientes").append(JSON.stringify(data[1].ingredients));
-                           $("#imagen").append(JSON.stringify(data[1].imageURL));
+                           $("#imagen").attr("src", data[1].imageURL)
                            $("#fecha").append(JSON.stringify(data[1].date));
                            $( '#getdata' ).html(data);
                          },

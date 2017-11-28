@@ -40,30 +40,14 @@ Licence URI: http://www.os-templates.com/template-terms
   <main class="container clear"> 
     <!-- main body -->
     <!-- ################################################################################################ -->
-    <div> 
-       <h2 class="center uppercase btmspace-50">Registrate en AHIMSA</h2>
-      <div class="login-page">
-        <div class="form">
-          <!-- LOGIN FORM -->
-            <form id="frm1" action="/signup" method="post">
-              <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" name="username">
-              </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control" name="password">
-              </div>
-
-              <button id="sendMail" type="submit" class="btn btn-warning btn-lg">Signup</button>
-            </form>
-
-          <hr>
-
-          <p><a href="/login.html">Login</a></p>
-        </div>
-      </div>
-    </div>
+    <div id="container">
+<h1>Mandanos un correo</h1>
+<input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
+<input id="subject" type="text" placeholder="Write Subject" />
+<textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
+<button id="send_email">Send Email</button>
+<span id="message"></span>
+</div>
     <!-- ################################################################################################ -->
 </div>
 <!-- ################################################################################################ -->
@@ -81,32 +65,38 @@ Licence URI: http://www.os-templates.com/template-terms
 <script src="layout/scripts/jquery.min.js"></script>
 <script src="layout/scripts/jquery.backtotop.js"></script>
 <script src="layout/scripts/jquery.mobilemenu.js"></script>
-<script type='text/javascript' language='javascript'>
-$('#sendMail').click(function() {
-  $.ajax({
-  type: "POST",
-  url: "https://mandrillapp.com/api/1.0/messages/send.json",
-  data: {
-    'key': '574125eb68560d135be3c49f6d9bc051-us17',
-    'message': {
-      'from_email': 'luciagarza90@gmail.com',
-      'to': [
-          {
-            'email': 'luciagarza90@gmail.com',
-            'name': 'Ahimsa',
-            'type': 'to'
-          }
-        ],
-      'autotext': 'true',
-      'subject': 'Bienvenido a Ahimsa',
-      'html': 'Hola! Gracias por registrarte en Ahimsa!!'
-    }
-  }
- }).done(function(response) {
-   console.log(response); // if you're into that sorta thing
- });
-});
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script><script>// <![CDATA[
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val(); //Valor estático
+        text=$("#content").val(); //Valor estático
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("
 
+Email has been sent at "+to+" . Please check inbox!
+
+");
+        }
+
+});
+    });
+});
 </script>
 </body>
 </html>
+
+
+
+<html>
+<head>
+<title>Node.JS Email application</title>
+
+</head>
+<body>
+
+</div>
