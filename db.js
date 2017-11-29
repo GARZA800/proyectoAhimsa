@@ -7,7 +7,7 @@ exports.connect = function(done) {
     pool = mysql.createPool ({
         host: 'localhost',
         user: 'root',
-        password: 'homero23',
+        password: 'AHIMSA_2017',
         port: '3306',
         database: 'Ahimsa'
     })
